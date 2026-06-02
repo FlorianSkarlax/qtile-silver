@@ -27,7 +27,7 @@ modules:
         - gnome-software
         - gnome-software-rpm-ostree
 
-  - from-file: common/qtile-modules.yml
-  - from-file: common/flatpak-modules.yml
+  - from-file: common/qtile.yml
+  - from-file: common/flatpak.yml
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully

@@ -1,13 +1,12 @@
 modules:
   - type: default-flatpaks
     configurations:
-      - notify: true # Send notification after install/uninstall is finished (true/false)
+      - notify: false
         scope: system
-        # If no repo information is specified, Flathub will be used by default
         install: # system flatpaks we want all users to have and not remove
           - io.gitlab.librewolf-community
           - org.gnome.Papers
           - org.gnome.Loupe
           - org.gnome.TextEditor
           - org.gnome.font-viewer
-      - scope: user # Also add Flathub user repo, but no user packages
+      - scope: user
