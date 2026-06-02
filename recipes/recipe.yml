@@ -27,6 +27,12 @@ modules:
         - gnome-software
         - gnome-software-rpm-ostree
 
+  - type: fonts
+    fonts:
+      nerd-fonts:
+        - FiraCode
+        - JetBrainsMono
+
   - from-file: common/qtile.yml
   - from-file: common/flatpak.yml
 
