@@ -1,0 +1,15 @@
+modules:
+  # install qtile and related packages:
+  - type: dnf
+    install:
+      packages:
+        - qtile
+        - qtile-extras
+        - qtile-wayland
+
+  # further configuration for qtile:
+  - type: dnf
+    install:
+      packages:
+        - swaylock
+        - swayidle
