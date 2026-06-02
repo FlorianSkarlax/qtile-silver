@@ -1,0 +1,24 @@
+- type: dnf
+  install:
+    packages:
+      - nautilus
+      - sushi # nautilus previewer
+      - gnome-tweaks
+  remove:
+    packages:
+      - gnome-software
+      - gnome-software-rpm-ostree
+
+- type: gnome-extensions
+  install:
+    - 307 # Dash to Dock
+    - 615 # AppIndicator and KStatusNotifierItem Support
+    - 19  # User Themes
+
+- type: gschema-overrides
+  include:
+    - org.gnome.desktop.interface.gschema.override
+  schema: org.gnome.desktop.interface
+  overrides:
+    - key: gtk-enable-primary-paste
+      value: "true"

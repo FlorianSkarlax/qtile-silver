@@ -18,14 +18,10 @@ modules:
     install:
       packages:
         - alacritty
-        - nautilus
-        - sushi
     remove:
       packages:
         - firefox
         - firefox-langpacks # also remove firefox dependency
-        - gnome-software
-        - gnome-software-rpm-ostree
 
   - type: fonts
     fonts:
