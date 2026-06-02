@@ -19,7 +19,7 @@ modules:
       packages:
         - alacritty
         - nautilus
-        - gnome-sushi
+        - sushi
     remove:
       packages:
         - firefox
