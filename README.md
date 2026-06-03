@@ -1,43 +1,72 @@
 # qtile-silver &nbsp; [![bluebuild build badge](https://github.com/florianskarlax/qtile-silver/actions/workflows/build.yml/badge.svg)](https://github.com/florianskarlax/qtile-silver/actions/workflows/build.yml)
 
-See the [BlueBuild docs](https://blue-build.org/how-to/setup/) for quick setup instructions for setting up your own repository based on this template.
+[qtile-silver](https://github.com/florianskarlax/qtile-silver) is a custom
+Fedora-based OSTree image built with [blue-build](https://blue-build.org/).
 
-After setup, it is recommended you update this README to describe your custom image.
+## Features
+
+This image includes both the [QTile](https://qtile.org/) window manager and 
+the [GNOME](https://www.gnome.org/) desktop environment, for easier 
+integration of GTK applications in QTile and having the option to switch to 
+a more traditional desktop environment if needed.
 
 ## Installation
 
-> [!WARNING]  
-> [This is an experimental feature](https://www.fedoraproject.org/wiki/Changes/OstreeNativeContainerStable), try at your own discretion.
+First install an OSTree-based Fedora image on your machine. I recommend
+using the [Fedora Silverblue](https://silverblue.fedoraproject.org/) image,
+but any OSTree-based image should work.
 
-To rebase an existing atomic Fedora installation to the latest build:
+Then rebase to the latest image with the following command:
 
-- First rebase to the unsigned image, to get the proper signing keys and policies installed:
-  ```
-  rpm-ostree rebase ostree-unverified-registry:ghcr.io/florianskarlax/qtile-silver:latest
-  ```
-- Reboot to complete the rebase:
-  ```
-  systemctl reboot
-  ```
-- Then rebase to the signed image, like so:
-  ```
-  rpm-ostree rebase ostree-image-signed:docker://ghcr.io/florianskarlax/qtile-silver:latest
-  ```
-- Reboot again to complete the installation
-  ```
-  systemctl reboot
-  ```
+```shell
+rpm-ostree rebase ostree-unverified-registry:ghcr.io/florianskarlax/qtile-silver:latest
+systemctl reboot  # required to apply the new image
+```
 
-The `latest` tag will automatically point to the latest build. That build will still always use the Fedora version specified in `recipe.yml`, so you won't get accidentally updated to the next major version.
+To get the latest signed image, you have to do the following step afterward:
+
+```shell
+rpm-ostree rebase ostree-image-signed:docker://ghcr.io/florianskarlax/qtile-silver:latest
+systemctl reboot  # required to apply the new image
+```
 
 ## ISO
 
-If build on Fedora Atomic, you can generate an offline ISO with the instructions available [here](https://blue-build.org/how-to/generate-iso/#_top). These ISOs cannot unfortunately be distributed on GitHub for free due to large sizes, so for public projects something else has to be used for hosting.
+I don't provide ISOs for this project due to the large size of the images,
+but you can build your own ISO with the instructions available
+[here](https://blue-build.org/how-to/generate-iso/).
+
+## Building
+
+To build the image locally, install [blue-build](https://blue-build.org/) and run:
+
+```shell
+bluebuild build ./recipes/recipe.yml
+```
 
 ## Verification
 
-These images are signed with [Sigstore](https://www.sigstore.dev/)'s [cosign](https://github.com/sigstore/cosign). You can verify the signature by downloading the `cosign.pub` file from this repo and running the following command:
+These images are signed with [Sigstore](https://www.sigstore.dev/)'s
+[cosign](https://github.com/sigstore/cosign).
+You can verify the signature by downloading the `cosign.pub` file from this 
+repo and running the following command:
 
 ```bash
 cosign verify --key cosign.pub ghcr.io/florianskarlax/qtile-silver
 ```
+
+## Project Structure
+
+- `recipes/` - Build recipes and common module configurations
+- `files/` - System files, scripts, and GNOME schema overrides
+- `modules/` - Custom blue-build modules
+
+## Contributing
+
+Contributions are welcome! If you have any ideas for new features or 
+improvements, feel free to open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the Apache License 2.0.
+See the [LICENSE](LICENSE) file for details.
