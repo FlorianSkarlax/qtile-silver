@@ -32,14 +32,9 @@ modules:
         - firefox-langpacks
         - nvtop
 
-  - type: fonts
-    fonts:
-      nerd-fonts:
-        - FiraCode
-        - JetBrainsMono
-
   - from-file: common/qtile.yml
   - from-file: common/flatpak.yml
   - from-file: common/gnome.yml
+  - from-file: common/appearance.yml
 
   - type: signing

@@ -1,0 +1,13 @@
+modules:
+  - type: fonts
+    fonts:
+      nerd-fonts:
+        - FiraCode
+        - JetBrainsMono
+
+  - type: dnf
+    install:
+      packages:
+        - yaru-icon-theme
+        - yaru-sound-theme
+        - yaru-theme
