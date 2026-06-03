@@ -18,8 +18,4 @@ modules:
 
   - type: gschema-overrides
     include:
-      - org.gnome.desktop.interface.gschema.override
-    schema: org.gnome.desktop.interface
-    overrides:
-      - key: gtk-enable-primary-paste
-        value: "true"
+      - zz1-primary-paste.gschema.override
