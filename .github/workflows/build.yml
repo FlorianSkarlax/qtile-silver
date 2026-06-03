@@ -43,3 +43,16 @@ jobs:
 
           # enabled by default, disable if your image is small and you want faster builds
           maximize_build_space: true
+
+  cleanup:
+    runs-on: ubuntu-latest
+    needs: bluebuild
+    permissions:
+      packages: write
+    steps:
+      - name: Delete old untagged images and signatures
+        uses: dataaxiom/ghcr-cleanup-action@v1
+        with:
+          token: '${{ secrets.GITHUB_TOKEN }}'
+          delete-orphaned-images: true
+          dry-run: true
