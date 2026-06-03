@@ -17,6 +17,15 @@ modules:
     install:
       packages:
         - alacritty
+        - dbus-daemon
+        - distrobox
+        - direnv
+        - screen
+        - tesseract
+        - tesseract-langpack-eng
+        - tesseract-langpack-deu
+        - tmux
+        - vim
     remove:
       packages:
         - firefox
