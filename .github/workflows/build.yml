@@ -73,23 +73,3 @@ jobs:
           use_cache: true
           retry_push_count: 3
           verify_install: true
-
-  cleanup:
-    name: Cleanup old images
-
-    runs-on: ubuntu-latest
-
-    needs: bluebuild
-
-    permissions:
-      packages: write
-
-    steps:
-      - name: Delete old untagged images and signatures
-        uses: dataaxiom/ghcr-cleanup-action@v1
-        with:
-          token: '${{ secrets.GITHUB_TOKEN }}'
-          exclude-tags: 'latest'  # keep the latest image
-          keep-n-tagged: 4
-          delete-untagged: true
-          delete-orphaned-images: true
