@@ -9,4 +9,5 @@ modules:
           - org.gnome.Loupe
           - org.gnome.TextEditor
           - org.gnome.font-viewer
+          - org.gnome.Extensions
       - scope: user
