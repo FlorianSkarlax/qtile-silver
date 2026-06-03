@@ -93,4 +93,3 @@ jobs:
           keep-n-tagged: 4
           delete-untagged: true
           delete-orphaned-images: true
-          dry-run: true
