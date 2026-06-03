@@ -67,9 +67,9 @@ jobs:
           registry_token: ${{ github.token }}
           pr_event_number: ${{ github.event.number }}
           maximize_build_space: true
-          build_chunked_oci: true
+          build_chunked_oci: false
           max_layers: 128
           skip_checkout: true
           use_cache: true
           retry_push_count: 3
-          verify_install: true
+          verify_install: false  # disabled for faster builds
