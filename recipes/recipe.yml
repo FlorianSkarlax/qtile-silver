@@ -30,6 +30,7 @@ modules:
       packages:
         - firefox
         - firefox-langpacks
+        - nvtop
 
   - type: fonts
     fonts:
