@@ -33,6 +33,8 @@ jobs:
       matrix:
         recipe:
           - recipe.yml
+        fedora_version:
+          - "44"
 
     steps:
       - name: Optimize build times
@@ -48,14 +50,15 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Gather image data from recipe
+      - name: Replace version placeholder in recipe
+        shell: bash
         run: |
-          echo "IMAGE_MAJOR_VERSION=$(grep '^image-version:' ./recipes/${{ matrix.recipe }} | sed 's/^image-version: //')" >> $GITHUB_ENV
+          sed -i "s/FEDORA_VERSION/${{ matrix.fedora_version }}/g" ./recipes/${{ matrix.recipe }}
 
       - name: Verify base image
         uses: EyeCantCU/cosign-action/verify@v0.3.0
         with:
-          containers: silverblue-main:${{ env.IMAGE_MAJOR_VERSION }}
+          containers: silverblue-main:${{ matrix.fedora_version }}
           registry: 'ghcr.io/ublue-os'
           pubkey: 'https://raw.githubusercontent.com/ublue-os/main/main/cosign.pub'
 
