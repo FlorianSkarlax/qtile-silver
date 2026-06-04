@@ -1,15 +1,25 @@
 modules:
-  # install qtile and related packages:
   - type: dnf
     install:
       packages:
+        # install qtile and related packages:
         - qtile
         - qtile-extras
         - qtile-wayland
 
-  # further configuration for qtile:
-  - type: dnf
-    install:
-      packages:
+        # further configuration for qtile:
         - swaylock
         - swayidle
+
+        # Bar
+        - waybar
+
+        # Notifications
+        - dunst
+
+        # App launcher
+        - rofi
+
+        # Screenshot tool
+        - grim
+        - slurp
