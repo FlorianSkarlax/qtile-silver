@@ -5,9 +5,24 @@ modules:
         scope: system
         install: # system flatpaks we want all users to have and not remove
           - io.gitlab.librewolf-community
-          - org.gnome.Papers
-          - org.gnome.Loupe
-          - org.gnome.TextEditor
-          - org.gnome.font-viewer
+          - org.fedoraproject.MediaWriter
+
+          # default gnome applications
+          - org.gnome.baobab
+          - org.gnome.Calculator
+          - org.gnome.Calendar
+          - org.gnome.Characters
+          - org.gnome.clocks
+          - org.gnome.Contacts
           - org.gnome.Extensions
+          - org.gnome.font-viewer
+          - org.gnome.Logs
+          - org.gnome.Loupe
+          - org.gnome.Maps
+          - org.gnome.Papers
+          - org.gnome.seahorse.Application
+          - org.gnome.SimpleScan
+          - org.gnome.Snapshot
+          - org.gnome.TextEditor
+          - org.gnome.Weather
       - scope: user
