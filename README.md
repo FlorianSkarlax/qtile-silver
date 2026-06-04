@@ -16,19 +16,51 @@ First install an OSTree-based Fedora image on your machine. I recommend
 using the [Fedora Silverblue](https://silverblue.fedoraproject.org/) image,
 but any OSTree-based image should work.
 
-Then rebase to the latest image with the following command:
+Then rebase to the latest Fedora 44 image with the following command:
 
 ```shell
-rpm-ostree rebase ostree-unverified-registry:ghcr.io/florianskarlax/qtile-silver:latest
+rpm-ostree rebase ostree-unverified-registry:ghcr.io/florianskarlax/qtile-silver:44
 systemctl reboot  # required to apply the new image
 ```
 
-To get the latest signed image, you have to do the following step afterward:
+To get the latest Fedora 44 signed image, you have to do the following step
+afterward:
 
 ```shell
-rpm-ostree rebase ostree-image-signed:docker://ghcr.io/florianskarlax/qtile-silver:latest
+rpm-ostree rebase ostree-image-signed:docker://ghcr.io/florianskarlax/qtile-silver:44
 systemctl reboot  # required to apply the new image
 ```
+
+If you want to use the latest development image, you can rebase to the `latest`
+tag instead:
+
+```shell
+rpm-ostree rebase ostree-unverified-registry:ghcr.io/florianskax/qtile-silver:latest
+systemctl reboot  # required to apply the new image
+```
+
+### Upgrading
+
+To upgrade to a newer version of the image (for example Fedora 44), simply
+run the rebase command again with the new tag:
+
+```shell
+rpm-ostree rebase ostree-unverified-registry:ghcr.io/florianskarlax/qtile-silver:44
+systemctl reboot  # required to apply the new image
+rpm-ostree rebase ostree-image-signed:docker://ghcr.io/florianskarlax/qtile-silver:44 # to get the latest signed image
+systemctl reboot  # required to apply the new image
+```
+
+> [!NOTE]
+> Always rebase one version at a time (for example from 43 to 44) and not
+> from 43 to 45, otherwise you might run into issues with missing packages or
+> broken dependencies.
+
+### Supported Fedora versions
+
+These Fedora versions are currently supported and available as images:
+
+- Fedora 44
 
 ## ISO
 
@@ -38,7 +70,8 @@ but you can build your own ISO with the instructions available
 
 ## Building
 
-To build the image locally, install [blue-build](https://blue-build.org/) and run:
+To build the image locally, install [blue-build](https://blue-build.org/)
+and run:
 
 ```shell
 bluebuild build ./recipes/recipe.yml
